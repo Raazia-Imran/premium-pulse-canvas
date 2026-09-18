@@ -23,4 +23,4 @@ Build a bright, premium industrial website centered on a photorealistic spatial 
 
 ## Validation
 - Test the live site at desktop and mobile widths.
-- Verify navigation, visual loading, text fit, parallax behavior, reduced-motion behavior, and no overlapping content.
+- Verify navigation, visual loading, text fit, parallax behavior, reduced-motion behavior, no overlapping content, and mobile performance. Below 768px, use a lightweight high-resolution dimensional render fallback or disable intensive camera rotation to preserve frame rate and battery life.
