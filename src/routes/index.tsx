@@ -3,8 +3,8 @@ import { ArrowDown, ArrowRight, Check, MoveUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteShell } from "@/components/site-shell";
 import { SpatialScene } from "@/components/spatial-scene";
-import { certifications, industries, memberships, services } from "@/lib/site-content";
-import serviceObjects from "@/assets/hosh-service-objects.jpg";
+import { certifications, memberships } from "@/lib/site-content";
+import { EnquiryBanner, FAQPreview, FeatureShowcase, IndustryExplorer, QuotePackages } from "@/components/site-sections";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [{ title: "HosH Integrity | We Prevent Failure" }, { name: "description", content: "Independent industrial inspection, asset integrity, QA/QC, NDT, HSE, certification, and technical training services." }, { property: "og:title", content: "HosH Integrity | We Prevent Failure" }, { property: "og:description", content: "Inspection intelligence for safer, more reliable industrial assets." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
@@ -26,16 +26,10 @@ function Index() {
       </div>
     </section>
 
-    <section id="capabilities" className="section-shell py-24 md:py-32">
-      <div className="section-heading"><div><p className="eyebrow">Core capabilities</p><h2>See deeper.<br/>Act earlier.</h2></div><p>Integrated inspection and assurance services designed to find risk before it becomes failure.</p></div>
-      <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {services.map((s,i)=><Link key={s.title} to="/services" className={`service-card service-card-${i+1}`}><div className="flex items-start justify-between"><span className="object-icon"><s.icon /></span><span className="service-code">{s.short}</span></div><div className="mt-auto"><h3>{s.title}</h3><p>{s.description}</p><span className="card-link">Explore <ArrowRight /></span></div></Link>)}
-      </div>
-      <div className="product-visual"><img src={serviceObjects} width={1200} height={912} loading="lazy" alt="Crane hook, ultrasonic scanner, and insulated pipe inspection objects" /><div className="product-caption"><span>Inspection systems</span><strong>Tactile precision.<br/>Documented confidence.</strong></div></div>
-    </section>
-
-    <section className="dark-band"><div className="section-shell py-24 md:py-32"><div className="section-heading dark"><div><p className="eyebrow text-accent">Industry coverage</p><h2>One standard.<br/>Every environment.</h2></div><p>From offshore platforms to production floors, our specialists adapt proven assurance systems to your operational reality.</p></div><div className="mt-14 grid gap-px border-y border-ink-border md:grid-cols-2 lg:grid-cols-3">{industries.map((industry)=><Link key={industry.title} to="/industries" className="industry-row"><industry.icon /><div><h3>{industry.title}</h3><p>{industry.description}</p></div><ArrowRight className="ml-auto" /></Link>)}</div></div></section>
+    <div id="capabilities"><FeatureShowcase/></div>
+    <IndustryExplorer/>
 
     <section className="section-shell py-24 md:py-32"><div className="assurance-band"><div><p className="eyebrow">Assured by standards</p><h2 className="mt-4 max-w-2xl text-4xl font-semibold md:text-6xl">Credibility is built into the system.</h2><p className="mt-6 max-w-xl leading-7 text-muted-foreground">Recognized certifications and professional memberships reinforce every inspection, report, and recommendation.</p></div><div className="grid grid-cols-2 gap-3">{[...certifications,...memberships].map(x=><div key={x} className="certificate-chip"><Check />{x}</div>)}</div></div></section>
+    <QuotePackages/><FAQPreview/><EnquiryBanner/>
   </SiteShell>;
 }
