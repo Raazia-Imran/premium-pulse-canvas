@@ -1,0 +1,6 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { FAQPreview } from "@/components/site-sections";
+import { SiteShell } from "@/components/site-shell";
+
+export const Route = createFileRoute("/faq")({ head:()=>({meta:[{title:"Frequently Asked Questions | HosH Integrity"},{name:"description",content:"Answers about HosH Integrity inspection services, industries, quotations, and technical training."},{property:"og:title",content:"Frequently Asked Questions | HosH Integrity"},{property:"og:description",content:"Clear answers before inspection work begins."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}), component: FAQPage });
+function FAQPage(){return <SiteShell><section className="inner-hero faq-hero"><div className="section-shell pt-36 md:pt-44"><p className="eyebrow">Knowledge base</p><h1 className="inner-title">Questions, answered with clarity.</h1><p className="inner-intro">A practical starting point for inspection, assurance, training, and quotation conversations.</p></div></section><FAQPreview full/></SiteShell>}

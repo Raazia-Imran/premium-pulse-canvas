@@ -29,6 +29,7 @@ export function FeatureShowcase() {
 export function IndustryExplorer() {
   const [active, setActive] = useState(0);
   const current = industries[active] ?? industries[0];
+  if (!current) return null;
   const Icon = current.icon;
   return <section className="industry-stage"><div className="section-shell py-24 md:py-32">
     <div className="industry-header"><p className="eyebrow text-accent">Operational environments</p><h2>Assurance changes<br/>with the terrain.</h2><p>Choose an environment to see how HosH’s inspection disciplines adapt to each operating context.</p></div>

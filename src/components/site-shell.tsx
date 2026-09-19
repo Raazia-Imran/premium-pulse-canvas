@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, MoveUpRight, X } from "lucide-react";
+import { ChevronDown, Menu, MoveUpRight, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -7,6 +7,8 @@ const nav = [
   ["Services", "/services"], ["Industries", "/industries"], ["Training", "/training"],
   ["Certifications", "/certifications"], ["About", "/about"],
 ] as const;
+
+const supportNav = [["FAQ", "/faq"], ["Insights", "/insights"], ["Privacy", "/privacy"], ["Terms", "/terms"]] as const;
 
 export function Brand() {
   return (
@@ -32,7 +34,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <Brand />
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
             {nav.map(([label, to]) => (
-              <Link key={to} to={to} activeProps={{ className: "text-foreground" }} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+              <Link key={to} to={to} activeProps={{ className: "nav-link-active" }} className="nav-link">
                 {label}
               </Link>
             ))}
@@ -42,24 +44,26 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <Link to="/contact">Start an enquiry <MoveUpRight /></Link>
             </Button>
           </div>
-          <Button variant="ghost" size="icon" className="rounded-full lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"}>
-            {open ? <X /> : <Menu />}
+          <Button variant="ghost" size="icon" className="menu-toggle rounded-full lg:hidden" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"}>
+            <span className="menu-icon">{open ? <X /> : <Menu />}</span>
           </Button>
         </div>
         {open && (
           <nav className="glass-shell mx-auto mt-2 flex max-w-[1440px] flex-col p-3 lg:hidden" aria-label="Mobile navigation">
-            {nav.map(([label, to]) => <Link key={to} to={to} onClick={() => setOpen(false)} className="rounded-md px-4 py-3 text-sm font-medium hover:bg-secondary">{label}</Link>)}
-            <Link to="/contact" onClick={() => setOpen(false)} className="mt-2 rounded-md bg-primary px-4 py-3 text-center text-sm font-semibold text-primary-foreground">Start an enquiry</Link>
+             {nav.map(([label, to]) => <Link key={to} to={to} onClick={() => setOpen(false)} activeProps={{ className: "mobile-nav-active" }} className="mobile-nav-link">{label}<ChevronDown className="size-3 -rotate-90"/></Link>)}
+             <Link to="/contact" onClick={() => setOpen(false)} activeProps={{ className: "mobile-nav-active" }} className="mobile-nav-link">Contact<ChevronDown className="size-3 -rotate-90"/></Link>
           </nav>
         )}
       </header>
       <main>{children}</main>
-      <footer className="bg-ink text-ink-foreground">
-        <div className="mx-auto grid max-w-[1440px] gap-10 px-6 py-14 md:grid-cols-[1.4fr_1fr_1fr] md:px-10 lg:px-16">
-          <div><div className="text-3xl font-semibold">We prevent failure.</div><p className="mt-4 max-w-sm text-sm leading-6 text-ink-muted">Independent inspection, technical assurance, and training for assets that matter.</p></div>
-          <div><div className="footer-label">Explore</div><div className="mt-4 grid gap-2">{nav.slice(0,4).map(([l,t]) => <Link key={t} to={t} className="text-sm text-ink-muted hover:text-ink-foreground">{l}</Link>)}</div></div>
-          <div><div className="footer-label">Contact</div><a className="mt-4 block text-sm text-ink-muted hover:text-ink-foreground" href="mailto:info@hoshint.com">info@hoshint.com</a><a className="mt-2 block text-sm text-ink-muted hover:text-ink-foreground" href="https://www.hoshint.com">www.hoshint.com</a></div>
-        </div>
+       <footer className="site-footer">
+         <div className="footer-cta"><div className="footer-beacon" aria-hidden="true"><span/><span/></div><div><p className="eyebrow text-accent">Independent assurance</p><h2>Keep critical assets<br/>working safely.</h2></div><Button asChild size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90"><Link to="/contact">Discuss your scope <MoveUpRight/></Link></Button></div>
+         <div className="footer-grid">
+           <div><Brand/><p className="mt-5 max-w-sm text-sm leading-6 text-ink-muted">Independent inspection, technical assurance, and training for assets that matter.</p></div>
+           <div><div className="footer-label">Capabilities</div><div className="footer-links">{nav.slice(0,4).map(([l,t]) => <Link key={t} to={t}>{l}</Link>)}</div></div>
+           <div><div className="footer-label">Company</div><div className="footer-links">{supportNav.map(([l,t]) => <Link key={t} to={t}>{l}</Link>)}</div></div>
+           <div><div className="footer-label">Contact</div><a className="footer-contact" href="mailto:info@hoshint.com">info@hoshint.com</a><a className="footer-contact" href="https://www.hoshint.com">www.hoshint.com</a></div>
+         </div>
         <div className="border-t border-ink-border px-6 py-5 text-center text-xs text-ink-muted">© {new Date().getFullYear()} HosH Integrity. All rights reserved.</div>
       </footer>
     </div>

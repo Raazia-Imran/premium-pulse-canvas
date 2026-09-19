@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { SiteShell } from "@/components/site-shell";
 import { pages, principles, services, industries, certifications, memberships } from "@/lib/site-content";
 import trainingImage from "@/assets/hosh-training-scene.jpg";
+import serviceObjects from "@/assets/hosh-service-objects.jpg";
+import { TiltCard } from "@/components/tilt-card";
 
 type PageKey = keyof typeof pages;
 
@@ -26,14 +28,16 @@ export function InnerPage({ type }: { type: PageKey }) {
       </section>
       {isTraining && <section className="section-shell -mt-10 pb-16"><img src={trainingImage} width={1408} height={1008} loading="lazy" alt="Technical inspection training beside industrial equipment" className="w-full rounded-md object-cover shadow-float" /></section>}
       <section className="section-shell py-20 md:py-28">
-        <div className="grid gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+        {(isServices || isIndustries) && <div className="inner-object-scene"><img src={serviceObjects} width={1200} height={912} alt="Dimensional industrial inspection objects"/><div><p className="eyebrow">Integrated field intelligence</p><h2>{isServices ? "Tools, judgement, and traceable evidence." : "Technical depth for demanding environments."}</h2></div></div>}
+        <div className={isServices || isIndustries ? "dimensional-grid" : "grid gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-2 lg:grid-cols-3"}>
           {items.map((item, i) => {
             const Icon = "icon" in item ? item.icon : Check;
-            return <article key={item.title} className="group min-h-64 bg-card p-7 transition-colors hover:bg-secondary md:p-9">
+            const content = <article className={isServices || isIndustries ? "dimensional-card" : "group min-h-64 bg-card p-7 transition-colors hover:bg-secondary md:p-9"}>
               <div className="flex items-start justify-between"><span className="object-icon"><Icon /></span><span className="text-xs font-semibold text-muted-foreground">0{i + 1}</span></div>
               <h2 className="mt-12 text-xl font-semibold">{item.title}</h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">{"description" in item ? item.description : item.body}</p>
-            </article>;
+             </article>;
+            return isServices || isIndustries ? <TiltCard key={item.title}>{content}</TiltCard> : <div key={item.title}>{content}</div>;
           })}
         </div>
       </section>
