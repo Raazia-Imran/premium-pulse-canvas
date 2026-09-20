@@ -8,27 +8,21 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { ArrowLeft, RefreshCw } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Brand } from "@/components/site-shell";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+    <div className="not-found-page">
+      <div className="not-found-panel">
+        <div className="not-found-nav"><Brand/><span>Asset location unknown</span></div>
+        <div className="not-found-orbit" aria-hidden="true"><span/><span/></div>
+        <div className="not-found-code">404</div>
+        <div className="not-found-copy"><p className="eyebrow">Signal lost</p><h1>This page is outside the inspection boundary.</h1><p>The address may be incorrect, or the page may have moved.</p><Button asChild variant="outline" className="mt-6 rounded-full border-foreground/30 bg-transparent"><Link to="/"><ArrowLeft/> Return home</Link></Button></div>
       </div>
     </div>
   );
@@ -51,21 +45,15 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
+          <Button
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
+            <RefreshCw/> Try again
+          </Button>
+          <Button asChild variant="outline"><Link to="/">Go home</Link></Button>
         </div>
       </div>
     </div>
