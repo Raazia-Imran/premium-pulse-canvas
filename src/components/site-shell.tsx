@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu, MoveUpRight, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
@@ -11,8 +11,9 @@ const nav = [
 const supportNav = [["FAQ", "/faq"], ["Insights", "/insights"], ["Privacy", "/privacy"], ["Terms", "/terms"]] as const;
 
 export function Brand() {
+  const isHome = useRouterState({ select: (state) => state.location.pathname === "/" });
   return (
-    <Link to="/" activeOptions={{ exact: true }} activeProps={{ className: "brand-active" }} className="group flex items-center gap-3 rounded-full" aria-label="HosH Integrity home">
+    <Link to="/" className={`group flex items-center gap-3 rounded-full${isHome ? " brand-active" : ""}`} aria-label="HosH Integrity home">
       <span className="relative grid size-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-brand">
         <span className="absolute inset-[5px] rounded-full border border-primary-foreground/40" />
         <span className="text-[11px] font-bold tracking-normal">H</span>
