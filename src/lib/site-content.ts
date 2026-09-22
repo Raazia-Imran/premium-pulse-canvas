@@ -35,6 +35,8 @@ export const memberships = ["Member of American Welding Society", "Member of AST
 
 export const onlineSystems = ["Online Certificate Verification System", "Online Project Dossier Management System", "Online Pipeline QC Mapping System", "Online Technical Library for HosH Staff", "Online Document & Data Control System"];
 
+export const codeOfEthics = ["We operate lawfully", "Zero tolerance to corruption", "We communicate facts timely", "We only hire competent resources carrying zeal to learn", "We do not compromise on the company’s credibility", "We handle information carefully", "We work as a team", "We work hard to maintain HSE standards"];
+
 export const serviceDetails = [
   { title: "General services", items: ["Construction QA/QC Supervision", "Expediting", "Lifting Equipment Certification", "Pre & Post Shipment Inspection", "Vendor Evaluation", "Technical Staffing", "Painting and Coating Inspection", "Warehouse Rack Inspection", "Design Review and Validation", "Pipeline QC Mapping", "Civil Structure Integrity Inspection", "Electrical System Integrity Assessment"] },
   { title: "Welding inspection", items: ["Preparation of WPS", "TPI of WPS & WQR Qualification", "Visual Inspection of Welding Process", "Interpretation of Weld Joint RT Film"] },
