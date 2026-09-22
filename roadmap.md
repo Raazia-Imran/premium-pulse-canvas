@@ -12,3 +12,7 @@
 - [x] Add quote-package pricing, FAQ, Insights, Privacy, Terms, and branded 404 experiences.
 - [x] Prepare the enquiry form for Formspree; activation awaits the client's form URL.
 - [x] Verify metadata, responsive behavior, accessibility, motion fallbacks, and all navigation.
+- [ ] Apply the client-approved Midnight Steel palette and exact supplied branding.
+- [ ] Replace improvised copy with verified profile content and explicit missing-information markers.
+- [ ] Connect the enquiry fields to a populated email handoff.
+- [ ] Redesign the footer and complete multi-viewport validation.

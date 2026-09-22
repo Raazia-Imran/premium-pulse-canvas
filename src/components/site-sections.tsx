@@ -39,13 +39,11 @@ export function IndustryExplorer() {
 }
 
 const packages = [
-  { name: "Focused inspection", scope: "Single asset or defined inspection scope", points: ["Technical scope review", "Applicable inspection discipline", "Documented findings"] },
-  { name: "Project assurance", scope: "Multi-discipline project inspection support", points: ["QA/QC coordination", "Vendor or site surveillance", "Traceable reporting"] },
-  { name: "Managed integrity", scope: "Ongoing assurance for critical operations", points: ["Planned inspection coverage", "Risk-led technical support", "Continuity across asset phases"] },
+  { name: "Commercial rates", scope: "Rates were not included in the supplied company profiles.", points: ["Scope", "Location", "Applicable standards"] },
 ];
 
 export function QuotePackages() {
-  return <section className="quote-section"><div className="section-shell py-24 md:py-32"><div className="quote-heading"><p className="eyebrow text-accent">Scope-based quotation</p><h2>Built around the asset.<br/>Not a generic rate card.</h2><p>Pricing is a temporary placeholder until the client confirms commercial rates. Final quotations depend on scope, location, standards, and timing.</p></div><div className="quote-grid">{packages.map((item,index)=><TiltCard key={item.name} className={index===1?"quote-card featured":"quote-card"}><div className="quote-card-inner"><span className="service-code">0{index+1}</span><h3>{item.name}</h3><strong>Custom quote</strong><p>{item.scope}</p><ul>{item.points.map(point=><li key={point}><Check/>{point}</li>)}</ul><Button asChild variant={index===1?"default":"outline"} className="mt-auto w-full rounded-full"><Link to="/contact">Request scope review <ArrowRight/></Link></Button></div></TiltCard>)}</div></div></section>;
+  return <section className="quote-section"><div className="section-shell py-24 md:py-32"><div className="quote-heading"><p className="eyebrow">Scope-based quotation</p><h2>Defined around the asset and assignment.</h2><p>HosH asks for the service, site, standards, and timing before preparing a quotation.</p></div><div className="quote-grid quote-grid-single">{packages.map((item)=><TiltCard key={item.name} className="quote-card"><div className="quote-card-inner"><p className="missing-info">Missing client information</p><h3>{item.name}</h3><strong>To be confirmed</strong><p>{item.scope}</p><ul>{item.points.map(point=><li key={point}><Check/>{point}</li>)}</ul><Button asChild className="mt-auto w-full rounded-full"><Link to="/contact">Request scope review <ArrowRight/></Link></Button></div></TiltCard>)}</div></div></section>;
 }
 
 export function FAQPreview({ full = false }: { full?: boolean }) {

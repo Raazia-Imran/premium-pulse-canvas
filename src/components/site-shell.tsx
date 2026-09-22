@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu, MoveUpRight, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import logoAsset from "@/assets/hosh-integrity-logo.png.asset.json";
 
 const nav = [
   ["Services", "/services"], ["Industries", "/industries"], ["Training", "/training"],
@@ -14,14 +15,7 @@ export function Brand() {
   const isHome = useRouterState({ select: (state) => state.location.pathname === "/" });
   return (
     <Link to="/" className={`group flex items-center gap-3 rounded-full${isHome ? " brand-active" : ""}`} aria-label="HosH Integrity home">
-      <span className="relative grid size-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-brand">
-        <span className="absolute inset-[5px] rounded-full border border-primary-foreground/40" />
-        <span className="text-[11px] font-bold tracking-normal">H</span>
-      </span>
-      <span className="leading-none">
-        <strong className="block font-display text-[19px] font-semibold tracking-normal">HosH</strong>
-        <span className="mt-1 block text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Integrity</span>
-      </span>
+      <img src={logoAsset.url} alt="HosH Integrity — We Prevent Failure" className="brand-logo" />
     </Link>
   );
 }
@@ -58,12 +52,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </header>
       <main>{children}</main>
        <footer className="site-footer">
-         <div className="footer-cta"><div className="footer-beacon" aria-hidden="true"><span/><span/></div><div><p className="eyebrow text-accent">Independent assurance</p><h2>Keep critical assets<br/>working safely.</h2></div><Button asChild size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90"><Link to="/contact">Discuss your scope <MoveUpRight/></Link></Button></div>
+         <div className="footer-cta"><div className="footer-scan" aria-hidden="true"><span/><span/><span/></div><div><p className="eyebrow text-accent">Higher reliability. Lower operating risk.</p><h2>We Prevent<br/>Failure.</h2><p className="footer-cta-copy">Inspection, quality, safety, and training expertise for the integrity of industrial assets.</p></div><Button asChild size="lg" className="rounded-full"><Link to="/contact">Discuss your scope <MoveUpRight/></Link></Button></div>
          <div className="footer-grid">
            <div><Brand/><p className="mt-5 max-w-sm text-sm leading-6 text-ink-muted">Independent inspection, technical assurance, and training for assets that matter.</p></div>
            <div><div className="footer-label">Capabilities</div><div className="footer-links">{nav.slice(0,4).map(([l,t]) => <Link key={t} to={t}>{l}</Link>)}</div></div>
            <div><div className="footer-label">Company</div><div className="footer-links">{supportNav.map(([l,t]) => <Link key={t} to={t}>{l}</Link>)}</div></div>
-           <div><div className="footer-label">Contact</div><a className="footer-contact" href="mailto:info@hoshint.com">info@hoshint.com</a><a className="footer-contact" href="https://www.hoshint.com">www.hoshint.com</a></div>
+            <div><div className="footer-label">Contact</div><a className="footer-contact" href="mailto:info@hoshint.com">info@hoshint.com</a><a className="footer-contact" href="https://www.hoshint.com">www.hoshint.com</a><p className="missing-info mt-4">Missing client information: phone and office address</p></div>
          </div>
         <div className="border-t border-ink-border px-6 py-5 text-center text-xs text-ink-muted">© {new Date().getFullYear()} HosH Integrity. All rights reserved.</div>
       </footer>
