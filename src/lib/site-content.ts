@@ -1,17 +1,14 @@
 import {
   Activity,
   BadgeCheck,
-  BriefcaseBusiness,
   Building2,
   Cable,
   FlaskConical,
   GraduationCap,
   HardHat,
-  Leaf,
   ScanLine,
   ShieldCheck,
   Waves,
-  Wrench,
 } from "lucide-react";
 
 export const services = [

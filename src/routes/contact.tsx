@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SiteShell } from "@/components/site-shell";
+import type { FormEvent } from "react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({ meta: [{ title: "Contact | HosH Integrity" }, { name: "description", content: "Start an inspection, training, QA/QC, or asset integrity enquiry with HosH Integrity." }, { property: "og:title", content: "Contact | HosH Integrity" }, { property: "og:description", content: "Bring clarity to your next critical decision." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const sendByEmail = (event: React.FormEvent<HTMLFormElement>) => {
+  const sendByEmail = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const subject = `HosH website enquiry — ${String(form.get("service") || "General enquiry")}`;
