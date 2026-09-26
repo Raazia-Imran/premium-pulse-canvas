@@ -1,7 +1,56 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, FileSearch, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/insights")({ head:()=>({meta:[{title:"Technical Insights | HosH Integrity"},{name:"description",content:"The future home of HosH Integrity technical guidance, inspection updates, and field perspectives."},{property:"og:title",content:"Technical Insights | HosH Integrity"},{property:"og:description",content:"Practical industrial inspection knowledge, coming soon."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}), component: Insights });
- function Insights(){const themes=[[FileSearch,"Inspection methods"],[ShieldCheck,"Safety and compliance"],[BookOpen,"Technical training"]] as const;return <SiteShell><section className="inner-hero"><div className="section-shell pt-36 md:pt-44"><p className="eyebrow">Insights</p><h1 className="inner-title">Field knowledge,<br/>carefully documented.</h1><p className="inner-intro">This publication area is reserved for client-approved technical articles.</p></div></section><section className="section-shell py-20 md:py-28"><p className="missing-info mb-6">Missing client information: approved article titles, copy, authors, and publication dates</p><div className="dimensional-grid">{themes.map(([Icon,title])=><article className="dimensional-card" key={title}><div className="object-icon"><Icon/></div><span className="service-code mt-10 block">Content placeholder</span><h2 className="mt-4 text-2xl font-semibold">{title}</h2><p className="mt-4 text-muted-foreground">Lorem ipsum — client-approved article content required.</p></article>)}</div><Button asChild className="mt-10 rounded-full"><Link to="/contact">Suggest a topic <ArrowRight/></Link></Button></section></SiteShell>}
+export const Route = createFileRoute("/insights")({
+  head: () => ({
+    links: [{ rel: "canonical", href: "https://www.hoshint.com/insights" }],
+    meta: [
+      { name: "robots", content: "noindex,follow" },
+      { title: "Technical Insights | HosH Integrity" },
+      {
+        name: "description",
+        content:
+          "The future home of HosH Integrity technical guidance, inspection updates, and field perspectives.",
+      },
+      { property: "og:title", content: "Technical Insights | HosH Integrity" },
+      {
+        property: "og:description",
+        content: "Practical industrial inspection knowledge, coming soon.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Insights,
+});
+function Insights() {
+  return (
+    <SiteShell>
+      <section className="inner-hero">
+        <div className="section-shell pt-36 md:pt-44">
+          <p className="eyebrow">Insights</p>
+          <h1 className="inner-title">
+            Field knowledge,
+            <br />
+            carefully documented.
+          </h1>
+          <p className="inner-intro">
+            Field perspectives on inspection, asset integrity, quality, and safety are on the way.
+          </p>
+        </div>
+      </section>
+      <section className="section-shell py-20 md:py-28">
+        <p className="missing-info mb-6">
+          Content needed from client: approved article titles, copy, authors, and publication dates.
+        </p>
+        <Button asChild className="mt-10 rounded-full">
+          <Link to="/contact">
+            Contact HosH <ArrowRight />
+          </Link>
+        </Button>
+      </section>
+    </SiteShell>
+  );
+}

@@ -19,10 +19,29 @@ function NotFoundComponent() {
   return (
     <div className="not-found-page">
       <div className="not-found-panel">
-        <div className="not-found-nav"><Brand/><span>Asset location unknown</span></div>
-        <div className="not-found-orbit" aria-hidden="true"><span/><span/></div>
+        <div className="not-found-nav">
+          <Brand />
+          <span>Asset location unknown</span>
+        </div>
+        <div className="not-found-orbit" aria-hidden="true">
+          <span />
+          <span />
+        </div>
         <div className="not-found-code">404</div>
-        <div className="not-found-copy"><p className="eyebrow">Signal lost</p><h1>This page is outside the inspection boundary.</h1><p>The address may be incorrect, or the page may have moved.</p><Button asChild variant="outline" className="mt-6 rounded-full border-foreground/30 bg-transparent"><Link to="/"><ArrowLeft/> Return home</Link></Button></div>
+        <div className="not-found-copy">
+          <p className="eyebrow">Signal lost</p>
+          <h1>This page is outside the inspection boundary.</h1>
+          <p>The address may be incorrect, or the page may have moved.</p>
+          <Button
+            asChild
+            variant="outline"
+            className="mt-6 rounded-full border-foreground/30 bg-transparent"
+          >
+            <Link to="/">
+              <ArrowLeft /> Return home
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -51,9 +70,11 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               reset();
             }}
           >
-            <RefreshCw/> Try again
+            <RefreshCw /> Try again
           </Button>
-          <Button asChild variant="outline"><Link to="/">Go home</Link></Button>
+          <Button asChild variant="outline">
+            <Link to="/">Go home</Link>
+          </Button>
         </div>
       </div>
     </div>
@@ -70,7 +91,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "HosH Integrity" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:image", content: "https://www.hoshint.com/og-image.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "HosH Integrity — Preventing Failures" },
+      { name: "twitter:image", content: "https://www.hoshint.com/og-image.jpg" },
     ],
     links: [
       {
@@ -79,7 +104,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap",
+      },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
     ],
   }),

@@ -1,27 +1,30 @@
-# Premium Web Redesign
+# HosH Integrity website
 
-/skill:redesign @connector:github:"GitHub API"  https://github.com/Raazia-Imran/HosH-Corporate-Website /theme-factory i have been working on this and i want u to deeply analyzed it and go thoriugh all the code enitre workfloe and all I fancy this one
-Could we adapt this design but on a darker theme
-saari photos attached as bg bhi wahin ik
-Mtlb u can get the idea ke konsi wali sahi raheginow the 2 sustainablity one ss i shared client want the website like that and for images and all logos and everything clinet said that use the content provided and i want u to make the webisite for me a 100% responsiveness with all screens with industry practices and best code practices no junk with mudularty reusability good stecutre do any changes u want but the final ui should be modern sleek premium 200$ worth it full of componoets ui animations and product feel apply as many things good libraries u want https://www.framer.com/marketplace/templates/finsaaas/ the content all should be 100% what they provided and ready to use website if u think we need anything more from client or there shoud be somthing more added to comoete this webste prject for now add dummy placholders we will ask client ater on and also https://finsaas.framer.ai/ if any database or anytig is needed add https://github.com/Raazia-Imran/HosH-Corporate-Website/tree/main for other pages i have this inspiration https://framer.com/projects/Finsaas-copy--K0HWQzTYNlvyVLPjIcez-gb5wg?node=augiA20Il basically clinets wants not a gebric ai looked ugly website he wants full of colors amazing ui premium feel https://wpastra.com/website-templates/?type=free and i have atached my repo and other things now also there r some rules it should be 100% responve across all screen
+Corporate website for HosH Integrity, built with React, TanStack Start, TypeScript, Tailwind CSS, and Vite. The copy and industrial photographs are drawn from the client-supplied `h2.pptx` and `h3.pptx` company profiles. The spatial illustrations are visual concepts and do not depict a specific client site or measured result.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/aa63b4ed-1b9b-4fdf-a33b-f7bc05dd93b5).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Run locally
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
+npm run lint
+npx tsc --noEmit
+npm run build
 ```
+
+The repository retains Lovable's build configuration and `bun.lock`. Avoid rewriting published history on the Lovable-connected branch.
+
+## Pages and content
+
+Home, Services, Industries, Training, Certifications, About, Contact, FAQ, Insights, Privacy, and Terms are implemented. Unknown routes use a custom 404 page. Reusable company data is in `src/lib/site-content.ts`. The Insights and legal pages are drafts, marked for client review and excluded from indexing. Do not publish unverified claims or replace missing information with invented details.
+
+## Launch checklist
+
+1. Confirm that `https://www.hoshint.com` is the deployed canonical site. If the production address differs, update all canonical links, the Open Graph image URL, `public/sitemap.xml`, and `public/robots.txt` together. Configure the alternate host to redirect to the canonical host.
+2. Submit the Contact form once and have the owner of `info@hoshint.com` click FormSubmit's verification link. Confirm that a real enquiry reaches the inbox; until activation, the form is not operational. FormSubmit receives submitted personal information, so approve its use and update the privacy policy accordingly.
+3. Obtain the registered legal entity, jurisdiction, office address, phone number, retention policy, privacy contact, and approval of Privacy and Terms. Remove `noindex` from those pages only after approval.
+4. Confirm that certifications, memberships, training availability, and the online systems in the profile remain current. Supply documentary evidence or revised copy for any changed qualification.
+5. Supply approved technical articles, author names, dates, and original on-site photographs if desired. The existing photos come from the client profiles; confirm their publication rights.
+6. Check the production deployment on physical or emulated mobile, tablet, and desktop browsers; validate navigation, keyboard use, reduced motion, forms, image loading, and Search Console indexing. Build and route smoke checks alone cannot guarantee layout at every screen size.
+
+The sitemap includes approved-content public pages only. Search optimization improves discoverability but cannot guarantee a top ranking. No paid plans or prices are advertised because the supplied profiles do not contain them.

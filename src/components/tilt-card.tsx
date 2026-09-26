@@ -5,7 +5,12 @@ import { cn } from "@/lib/utils";
 export function TiltCard({ children, className }: { children: ReactNode; className?: string }) {
   const root = useRef<HTMLDivElement>(null);
   const move = (event: MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 768 || window.matchMedia("(prefers-reduced-motion: reduce)").matches || !root.current) return;
+    if (
+      window.innerWidth < 768 ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !root.current
+    )
+      return;
     const rect = root.current.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width;
     const y = (event.clientY - rect.top) / rect.height;
@@ -20,5 +25,12 @@ export function TiltCard({ children, className }: { children: ReactNode; classNa
     root.current?.style.setProperty("--tilt-ry", "0deg");
     root.current?.classList.remove("is-hover", "is-tilting");
   };
-  return <div ref={root} onMouseMove={move} onMouseLeave={reset} className={cn("t-tilt", className)}><div className="t-tilt-card">{children}<span className="t-tilt-glare" aria-hidden="true" /></div></div>;
+  return (
+    <div ref={root} onMouseMove={move} onMouseLeave={reset} className={cn("t-tilt", className)}>
+      <div className="t-tilt-card">
+        {children}
+        <span className="t-tilt-glare" aria-hidden="true" />
+      </div>
+    </div>
+  );
 }
